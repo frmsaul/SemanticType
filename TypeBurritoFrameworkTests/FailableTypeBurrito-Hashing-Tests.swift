@@ -12,8 +12,8 @@ import XCTest
 enum _FailableNameOfPerson: FailableTypeBurritoSpec {
     typealias TheTypeInsideTheBurrito = String
     
-    static func gatewayMap(premap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito? {
-        return premap
+    static func gatewayMap(preMap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito? {
+        return preMap
     }
 }
 typealias FailableNameOfPerson = FailableTypeBurrito<_FailableNameOfPerson>

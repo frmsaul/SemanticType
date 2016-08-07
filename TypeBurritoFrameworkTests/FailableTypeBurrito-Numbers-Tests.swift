@@ -14,8 +14,8 @@ class FailableTypeBurrito_Numbers_Tests: XCTestCase {
     enum _DoubleWrapperBetween0And100: FailableTypeBurritoSpec {
         typealias TheTypeInsideTheBurrito = Double
         
-        static func gatewayMap(premap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito? {
-            return (0...100 ~= premap) ? premap : nil
+        static func gatewayMap(preMap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito? {
+            return (0...100 ~= preMap) ? preMap : nil
         }
     }
     typealias DoubleWrapperBetween0And100 = FailableTypeBurrito<_DoubleWrapperBetween0And100>

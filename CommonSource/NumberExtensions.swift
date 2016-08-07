@@ -7,13 +7,13 @@
 //
 
 public protocol SummableSubtractable{
-	func +(lhs: Self, rhs: Self) -> Self
-	func -(lhs: Self, rhs: Self) -> Self
+	static func +(lhs: Self, rhs: Self) -> Self
+	static func -(lhs: Self, rhs: Self) -> Self
 }
 
 public protocol MultipliableDivisible {
-	func *(lhs: Self, rhs: Self) -> Self
-	func /(lhs: Self, rhs: Self) -> Self
+	static func *(lhs: Self, rhs: Self) -> Self
+	static func /(lhs: Self, rhs: Self) -> Self
 }
 
 

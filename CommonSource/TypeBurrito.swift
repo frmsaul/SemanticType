@@ -93,18 +93,19 @@ public struct TypeBurrito <Spec: TypeBurritoSpec>: Comparable, Hashable, CustomS
 	public var hashValue: Int {
 		return self.value.hashValue
 	}
-
+    
+    // Comparable compliance
+    public static func  == <Spec: TypeBurritoSpec>
+        (left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) -> Bool {
+        return left.value == right.value
+    }
+    public static func < <Spec: TypeBurritoSpec>
+        (left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) -> Bool {
+        return left.value < right.value
+    }
 }
 
 
-// Comparable compliance
-public func  == <Spec: TypeBurritoSpec>
-	(left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) -> Bool {
-	return left.value == right.value
-}
-public func < <Spec: TypeBurritoSpec>
-	(left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) -> Bool {
-		return left.value < right.value
-}
+
 
 
