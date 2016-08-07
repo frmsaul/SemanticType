@@ -22,12 +22,12 @@ public func - <Spec where Spec.TheTypeInsideTheBurrito: SummableSubtractable>
 }
 
 public func += <Spec where Spec.TheTypeInsideTheBurrito: SummableSubtractable>
-	(inout left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
+	(left: inout TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
 		left.value = (left.value + right.value)
 }
 
 public func -= <Spec where Spec.TheTypeInsideTheBurrito: SummableSubtractable>
-	(inout left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
+	(left: inout TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
 		left.value = (left.value - right.value)
 }
 
@@ -47,11 +47,11 @@ public func / <Spec where Spec.TheTypeInsideTheBurrito: MultipliableDivisible>
 }
 
 public func *= <Spec where Spec.TheTypeInsideTheBurrito: MultipliableDivisible>
-	(inout left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
+	(left: inout TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
 	left.value = (left.value * right.value)
 }
 
 public func /= <Spec where Spec.TheTypeInsideTheBurrito: MultipliableDivisible>
-	(inout left: TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
+	(left: inout TypeBurrito<Spec>, right: TypeBurrito<Spec>) {
 	left.value = (left.value / right.value)
 }

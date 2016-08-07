@@ -41,7 +41,7 @@ public struct FailableTypeBurrito <Spec: FailableTypeBurritoSpec>: Comparable, H
 	
 	public init?(_ value: Spec.TheTypeInsideTheBurrito){
 		
-		if let mappedValue = Spec.gatewayMap(value){
+		if let mappedValue = Spec.gatewayMap(preMap: value){
 			self._value = mappedValue
 		}
 		else{

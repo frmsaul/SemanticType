@@ -23,8 +23,8 @@ class TypeBurrito_String_Tests: XCTestCase {
 	enum _CaseInsensitiveUsername: TypeBurritoSpec {
 		typealias TheTypeInsideTheBurrito = String
 		
-		static func gatewayMap(preMap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito{
-			return preMap.lowercaseString
+		static func gatewayMap(_ preMap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito{
+			return preMap.lowercased()
 		}
 	}
 	typealias CaseInsensitiveUsername = TypeBurrito<_CaseInsensitiveUsername>

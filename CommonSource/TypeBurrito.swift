@@ -60,7 +60,7 @@ public struct TypeBurrito <Spec: TypeBurritoSpec>: Comparable, Hashable, CustomS
 		}
 		set{
 			// Before setting the value, we first pass it through our gatewayMap function.
-			self._value = Spec.gatewayMap(newValue)
+			self._value = Spec.gatewayMap(preMap: newValue)
 		}
 	}
 	
@@ -76,7 +76,7 @@ public struct TypeBurrito <Spec: TypeBurritoSpec>: Comparable, Hashable, CustomS
 		// If we could, we would simply set self._value using self.value in this case too.
 		// However Swift is unfortunately not smart enough to realize this would satisfy initialization.
 		
-		self._value = Spec.gatewayMap(value)
+		self._value = Spec.gatewayMap(preMap: value)
 	}
 	
 	// CustomStringConvertible compliance

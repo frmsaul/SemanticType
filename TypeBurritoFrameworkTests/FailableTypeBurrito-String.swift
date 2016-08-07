@@ -17,8 +17,8 @@ class FailableTypeBurrito_String: XCTestCase {
 		
 		static func gatewayMap(preMap: TheTypeInsideTheBurrito) -> TheTypeInsideTheBurrito?{
 			
-			func stringContainsOnlyHebrewCharacters(str: String) -> Bool{
-				func charIsHebrew(char: Character) -> Bool{
+			func stringContainsOnlyHebrewCharacters(_ str: String) -> Bool{
+				func charIsHebrew(_ char: Character) -> Bool{
 					return (char >= "א" && char <= "ת")
 				}
 				
