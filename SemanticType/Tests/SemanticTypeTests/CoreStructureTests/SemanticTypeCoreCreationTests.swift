@@ -10,17 +10,24 @@ import XCTest
 
 final class SemanticTypeCoreCreationTests: XCTestCase {
     
-    
-    func testModificationlessErrorlessCreation() {
-        enum Encrypted_Spec: SemanticTypeSpec {
-            typealias BackingPrimitiveWithValueSemantics = Data
+    func testErrorlessModificationlessCreation() {
+        enum Cents_Spec: SemanticTypeSpec {
+            typealias BackingPrimitiveWithValueSemantics = Int
             typealias Error = Never
-            
-            static func gatewayMap(preMap: String) -> Result<String, Never> {
-                return .success(preMap.lowercased())
-            }
         }
-//        typealias CaselessString = SemanticType<CaselessString_Spec>
+        typealias Cents = SemanticType<Cents_Spec>
+        
+        let fiftyCents = Cents.create(50).get()
+        XCTAssertEqual(fiftyCents._backingPrimitiveProxy, 50)
+        
+        let negativeFiftyCents = Cents.create(-50).get()
+        XCTAssertEqual(negativeFiftyCents._backingPrimitiveProxy, -50)
+        
+        let adviceMoney = Cents.create(2).get()
+        XCTAssertEqual(adviceMoney._backingPrimitiveProxy, 2)
+
+        let aLotOfAdvice = Cents.create(2_000_000_000_000).get()
+        XCTAssertEqual(aLotOfAdvice._backingPrimitiveProxy, 2_000_000_000_000)
 
     }
 
@@ -49,24 +56,44 @@ final class SemanticTypeCoreCreationTests: XCTestCase {
     }
     
     func testErrorfullCreation() {
-        enum StringlessString_Spec: SemanticTypeSpec {
-            typealias BackingPrimitiveWithValueSemantics = String
-            enum Error: Swift.Error {
-                case containsStringValues
+        enum FiveLetterWordArray_Spec: SemanticTypeSpec {
+            typealias BackingPrimitiveWithValueSemantics = [String]
+            struct Error: Swift.Error {
+                var excludedWords: [String]
             }
             
-            static func gatewayMap(preMap: String) -> Result<String, Error> {
-                return .failure(.containsStringValues)
+            static func gatewayMap(preMap: [String]) -> Result<[String], Error> {
+                let excludedWords = preMap.filter { $0.count != 5 }
+                guard excludedWords.isEmpty
+                    else { return .failure(.init(excludedWords: excludedWords)) }
+                return .success(preMap)
             }
         }
-        typealias StringlessString = SemanticType<StringlessString_Spec>
+        typealias FiveLetterWordArray = SemanticType<FiveLetterWordArray_Spec>
         
+        let arrayThatOnlyContainsFiveLetterWords = ["12345", "Earth", "water", "melon", "great"]
         
-
+        let shouldBeValid = FiveLetterWordArray.create(arrayThatOnlyContainsFiveLetterWords)
+        switch shouldBeValid {
+        case .success(let fiveLetterWordArray):
+            XCTAssertEqual(fiveLetterWordArray._backingPrimitiveProxy, arrayThatOnlyContainsFiveLetterWords)
+        case .failure:
+            XCTFail()
+        }
+        
+        let shouldBeInvalid = FiveLetterWordArray.create(arrayThatOnlyContainsFiveLetterWords + ["123456"])
+        switch shouldBeInvalid {
+        case .success:
+            XCTFail()
+        case .failure(let error):
+            XCTAssertEqual(error.excludedWords, ["123456"])
+        }
     }
     
     static var allTests = [
+        ("testErrorlessModificationlessCreation", testErrorlessModificationlessCreation),
         ("testErrorlessValueModifyingCreation", testErrorlessValueModifyingCreation),
+        ("testErrorfullCreation", testErrorfullCreation),
     ]
 }
 
