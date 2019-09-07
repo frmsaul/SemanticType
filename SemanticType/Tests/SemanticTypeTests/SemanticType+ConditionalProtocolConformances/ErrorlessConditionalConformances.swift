@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import XCTest
+@testable import SemanticType
+
+final class SemanticType_ConditioinalProtocolConformances_ErrorlessConditionalConformancesTests: XCTestCase {
+    
+    func testAdditiveArithmeticConformance() {
+        
+    }
+    
+    static var allTests = [
+        ("testAdditiveArithmeticConformance", testAdditiveArithmeticConformance),
+    ]
+
+}
