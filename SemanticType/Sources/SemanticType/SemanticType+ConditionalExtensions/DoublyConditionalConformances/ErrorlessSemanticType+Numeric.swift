@@ -1,10 +1,3 @@
-//
-//  Numeric.swift
-//  
-//
-//  Created by Atai Barkai on 9/14/19.
-//
-
 /// A marker protocol to be conformed to by a `SemanticTypeSpec` type
 /// to conditionally provide `Numeric` support for its associated `SemanticType`.
 ///
@@ -52,7 +45,4 @@ extension SemanticType: SignedNumeric
     Spec.BackingPrimitiveWithValueSemantics: SignedNumeric,
     Spec.Error == Never
 { }
-
-
-
 

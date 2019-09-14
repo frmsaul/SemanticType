@@ -1,12 +1,3 @@
-//
-//  UniversallyApplicableConformances.swift
-//
-//
-//  Created by Atai Barkai on 8/2/19.
-//
-
-// Conditional protocol conformances applicable to all `SemanticType`s:
-
 extension SemanticType: CustomStringConvertible where Spec.BackingPrimitiveWithValueSemantics: CustomStringConvertible {
     public var description: String {
         return backingPrimitive.description

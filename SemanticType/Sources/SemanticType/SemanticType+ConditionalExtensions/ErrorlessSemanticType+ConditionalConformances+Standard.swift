@@ -1,13 +1,3 @@
-//
-//  NeverErrorConformances.swift
-//
-//
-//  Created by Atai Barkai on 8/2/19.
-//
-
-// Conditional protocol conformances applicable to `SemanticType`s which
-// may be created without the possibility of error (i.e. where `Spec.Error == Never`):
-
 extension SemanticType: AdditiveArithmetic
     where
     Spec.BackingPrimitiveWithValueSemantics: AdditiveArithmetic,

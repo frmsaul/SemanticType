@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Atai Barkai on 9/14/19.
-//
-
 extension SemanticType: ExpressibleByIntegerLiteral
     where
     Spec.BackingPrimitiveWithValueSemantics: ExpressibleByIntegerLiteral,
