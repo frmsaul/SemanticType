@@ -5,8 +5,14 @@
 //  Created by Atai Barkai on 8/2/19.
 //
 
-// A very thin, easily-verifiable core for `SemanticType`,
-// exposing a single, maximally-typed (`Result`-returning) factory method.
+// NOTE: This file contains a very thin, easily-verifiable core for `SemanticType`,
+// exposing a single, maximally-typed (`Result`-returning) factory method --
+// which is then utilized in other files to facilitate many other capabilities
+// guarenteed to respect the constraints imposed in this file.
+
+/// A type encoding semantic information over and above the information encoded by
+/// the types used to store its relevant state.
+/// - Tag: SemanticType
 @dynamicMemberLookup
 public struct SemanticType<Spec: GeneralizedSemanticTypeSpec> {
     
