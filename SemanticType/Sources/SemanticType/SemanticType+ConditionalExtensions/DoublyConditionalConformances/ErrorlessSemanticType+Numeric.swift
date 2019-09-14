@@ -3,7 +3,9 @@
 ///
 /// If a `SemanticTypeSpec` conforms to this protocol, its associated `SemanticType`
 /// will conform to `Numeric`.
-public protocol ShouldBeNumeric: GeneralizedSemanticTypeSpec where BackingPrimitiveWithValueSemantics: Numeric { }
+public protocol ShouldBeNumeric: GeneralizedSemanticTypeSpec
+    where
+    BackingPrimitiveWithValueSemantics: Numeric { }
 
 extension SemanticType: Numeric
     where
